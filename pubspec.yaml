@@ -90,6 +90,9 @@ flutter:
     - family: Bungee
       fonts:
         - asset: assets/fonts/Bungee/Bungee-Regular.ttf
+    - family: DMMono
+      fonts:
+        - asset: assets/fonts/DMMono/DMMono-Medium.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #

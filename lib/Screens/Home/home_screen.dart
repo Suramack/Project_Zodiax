@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.transparent,
       appBar: AppBar(
         title: Text(
-          'Find Zodiac Sign',
+          'ZODIAX.',
           style: homeappBarTitleStyle(),
         ),
         elevation: 0.5,
@@ -68,10 +68,12 @@ class _HomeScreenState extends State<HomeScreen> {
               width: screenSize.width * 0.8,
               height: 200,
               decoration: BoxDecoration(
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                   colors: [
                     Color(0xffad73ff),
                     Color(0xffdbaeff),
+                    Color(0xffdbaeff),
+                    Color(0xffad73ff),
                   ],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
@@ -94,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
             ),
-            const SizedBox(height: 200),
+            SizedBox(height: screenSize.height * 0.15),
             SizedBox(
               width: screenSize.width * 0.7,
               child: NeumorphicButton(

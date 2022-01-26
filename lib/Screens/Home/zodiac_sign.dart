@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 import 'package:intl/intl.dart';
+import 'package:zodiax/Screens/Home/Components/style.dart';
 
 List<String> zodiacSignList = [
   'Aries',
@@ -18,7 +19,7 @@ List<String> zodiacSignList = [
   'Aquarius',
   'Pisces',
 ];
-List<String> ZodiacSentance = [
+List<String> zodiacSentance = [
   'Gets angry, then forgets why they were angry, Thinks everything is a game they can win',
   'All or nothing, no in between, Wears the same outfit every day',
   'Uses humor as a crutch, Could talk to a brick wall, Arguments as flirting',
@@ -61,8 +62,6 @@ List<String> zodiacImageList = [
   'aquarius.png',
   'pisces.png'
 ];
-
-void betweenDateindex(DateTime dob) {}
 
 zodiacBottomSheet(BuildContext context, DateTime selectedDate) {
   int month = selectedDate.month;
@@ -112,7 +111,14 @@ zodiacBottomSheet(BuildContext context, DateTime selectedDate) {
                         width: screenSize.width,
                         height: 55,
                         decoration: BoxDecoration(
-                          color: Colors.blue,
+                          gradient: const LinearGradient(
+                            colors: [
+                              Color(0xffad73ff),
+                              Color(0xffdbaeff),
+                            ],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                          ),
                           boxShadow: [
                             BoxShadow(
                               blurRadius: 3,
@@ -122,7 +128,11 @@ zodiacBottomSheet(BuildContext context, DateTime selectedDate) {
                           borderRadius:
                               const BorderRadius.all(Radius.circular(30)),
                         ),
-                        child: Center(child: Text('Your Zodiac Sign')),
+                        child: Center(
+                            child: Text(
+                          'Your Zodiac Sign',
+                          style: bottomsheetBarTitleStyle(),
+                        )),
                       ),
                       const SizedBox(height: 20),
                       Container(
@@ -143,24 +153,35 @@ zodiacBottomSheet(BuildContext context, DateTime selectedDate) {
                                   color: Colors.grey.withOpacity(0.5)),
                             ]),
                         child: Center(
-                          child: Image.asset(
-                            'images/' + zodiacImageList[index!],
-                          ),
-                        ),
+                            child: Image.asset(
+                                      'images/' + zodiacImageList[index!],
+                                    ) !=
+                                    null
+                                ? Image.asset(
+                                    'images/' + zodiacImageList[index])
+                                : const LinearProgressIndicator()),
                       ),
                       const SizedBox(height: 10),
-                      Text(zodiacSignList[index]),
-                      const SizedBox(height: 10),
-                      Text(formatedDOB),
+                      Text(
+                        zodiacSignList[index],
+                        style: zodiacSignTextStyle(),
+                      ),
                       const SizedBox(height: 10),
                       Text(
-                        ZodiacSentance[index],
-                        maxLines: 3,
+                        formatedDOB,
+                        style: dobTextStyle(),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        '"' + zodiacSentance[index] + '"',
+                        maxLines: 5,
+                        style: zodiacSentanceTitleStyle(),
+                        textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 10),
                       Container(
                         width: 200,
-                        height: 50,
+                        height: 55,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100)),
                         child: NeumorphicButton(
@@ -170,13 +191,16 @@ zodiacBottomSheet(BuildContext context, DateTime selectedDate) {
                             Navigator.pop(context);
                           },
                           style: NeumorphicStyle(
+                            color: const Color(0xffdbaeff),
                             boxShape: NeumorphicBoxShape.roundRect(
                               BorderRadius.circular(100),
                             ),
                           ),
-                          child: Center(
-                            child: Text(
-                              'Another date',
+                          child: const Center(
+                            child: Icon(
+                              Icons.arrow_back_ios,
+                              color: Colors.white,
+                              size: 26,
                             ),
                           ),
                         ),
